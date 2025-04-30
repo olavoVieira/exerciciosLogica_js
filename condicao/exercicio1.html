@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificar Soma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Verificar se A + B é menor que C</h2>
+
+  <label for="valorA">Digite o valor de A:</label><br>
+  <input type="number" id="valorA"><br>
+
+  <label for="valorB">Digite o valor de B:</label><br>
+  <input type="number" id="valorB"><br>
+
+  <label for="valorC">Digite o valor de C:</label><br>
+  <input type="number" id="valorC"><br>
+
+  <button onclick="verificarSoma()">Verificar</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function verificarSoma() {
+      const A = parseFloat(document.getElementById("valorA").value);
+      const B = parseFloat(document.getElementById("valorB").value);
+      const C = parseFloat(document.getElementById("valorC").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(A) || isNaN(B) || isNaN(C)) {
+        resultado.textContent = "Por favor, insira valores válidos para A, B e C.";
+        return;
+      }
+
+      const soma = A + B;
+
+      if (soma < C) {
+        resultado.textContent = `A + B = ${soma}, que é MENOR que C (${C}).`;
+      } else {
+        resultado.textContent = `A + B = ${soma}, que NÃO é menor que C (${C}).`;
+      }
+    }
+  </script>
+
+</body>
+</html>

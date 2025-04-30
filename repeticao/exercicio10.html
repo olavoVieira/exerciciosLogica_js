@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo de Fatorial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fatorial de um Número</h2>
+
+  <label for="valorA">Digite um número inteiro (A):</label><br>
+  <input type="number" id="valorA" min="0"><br>
+
+  <button onclick="calcularFatorial()">Calcular Fatorial</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcularFatorial() {
+      const A = parseInt(document.getElementById("valorA").value);
+      const resultadoEl = document.getElementById("resultado");
+
+      if (isNaN(A) || A < 0) {
+        resultadoEl.textContent = "Por favor, digite um número inteiro não negativo.";
+        return;
+      }
+
+      let fatorial = 1;
+      let sequencia = "";
+
+      for (let i = A; i >= 1; i--) {
+        fatorial *= i;
+        sequencia += (i === 1) ? i : i + " x ";
+      }
+
+      resultadoEl.textContent = `${A}! = ${sequencia} = ${fatorial}`;
+    }
+  </script>
+
+</body>
+</html>

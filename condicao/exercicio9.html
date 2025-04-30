@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Peso Ideal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, select, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calcular Peso Ideal</h2>
+
+  <label for="altura">Digite sua altura (em metros):</label>
+  <input type="number" id="altura" step="0.01"><br>
+
+  <label for="sexo">Selecione seu sexo:</label>
+  <select id="sexo">
+    <option value="">-- Selecione --</option>
+    <option value="masculino">Masculino</option>
+    <option value="feminino">Feminino</option>
+  </select><br>
+
+  <button onclick="calcularPesoIdeal()">Calcular Peso Ideal</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcularPesoIdeal() {
+      const altura = parseFloat(document.getElementById("altura").value);
+      const sexo = document.getElementById("sexo").value;
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(altura) || altura <= 0) {
+        resultado.textContent = "Por favor, insira uma altura válida.";
+        return;
+      }
+
+      if (sexo === "") {
+        resultado.textContent = "Por favor, selecione o sexo.";
+        return;
+      }
+
+      let pesoIdeal;
+
+      if (sexo === "masculino") {
+        pesoIdeal = (72.7 * altura) - 58;
+        resultado.textContent = `Peso ideal para homem: ${pesoIdeal.toFixed(2)} kg.`;
+      } else if (sexo === "feminino") {
+        pesoIdeal = (62.1 * altura) - 44.7;
+        resultado.textContent = `Peso ideal para mulher: ${pesoIdeal.toFixed(2)} kg.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

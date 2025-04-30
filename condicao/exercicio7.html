@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Par ou Ímpar + Soma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Somar 5 se par ou 8 se ímpar</h2>
+
+  <label for="numero">Digite um número:</label>
+  <input type="number" id="numero"><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      const numero = parseInt(document.getElementById("numero").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(numero)) {
+        resultado.textContent = "Por favor, digite um número válido.";
+        return;
+      }
+
+      let resultadoFinal;
+
+      if (numero % 2 === 0) {
+        resultadoFinal = numero + 5;
+        resultado.textContent = `O número é PAR. Resultado: ${numero} + 5 = ${resultadoFinal}`;
+      } else {
+        resultadoFinal = numero + 8;
+        resultado.textContent = `O número é ÍMPAR. Resultado: ${numero} + 8 = ${resultadoFinal}`;
+      }
+    }
+  </script>
+
+</body>
+</html>

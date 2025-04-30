@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Progressão Geométrica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Progressão Geométrica (P.G.)</h2>
+
+  <label for="valorA">Valor inicial (A):</label><br>
+  <input type="number" id="valorA"><br>
+
+  <label for="razaoR">Razão (R):</label><br>
+  <input type="number" id="razaoR"><br>
+
+  <button onclick="gerarPG()">Gerar P.G.</button>
+
+  <h3>Resultado:</h3>
+  <ul id="resultado"></ul>
+
+  <script>
+    function gerarPG() {
+      const A = parseFloat(document.getElementById("valorA").value);
+      const R = parseFloat(document.getElementById("razaoR").value);
+      const lista = document.getElementById("resultado");
+
+      // Limpa resultados anteriores
+      lista.innerHTML = "";
+
+      if (isNaN(A) || isNaN(R)) {
+        alert("Por favor, insira valores válidos para A e R.");
+        return;
+      }
+
+      for (let i = 0; i < 10; i++) {
+        const termo = A * Math.pow(R, i);
+        const item = document.createElement("li");
+        item.textContent = `Termo ${i + 1}: ${termo}`;
+        lista.appendChild(item);
+      }
+    }
+  </script>
+
+</body>
+</html>

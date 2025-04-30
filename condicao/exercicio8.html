@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordem Decrescente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Organizar Números em Ordem Decrescente</h2>
+
+  <label for="valor1">Digite o 1º número:</label>
+  <input type="number" id="valor1"><br>
+
+  <label for="valor2">Digite o 2º número:</label>
+  <input type="number" id="valor2"><br>
+
+  <label for="valor3">Digite o 3º número:</label>
+  <input type="number" id="valor3"><br>
+
+  <button onclick="ordenar()">Ordenar</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function ordenar() {
+      const v1 = parseInt(document.getElementById("valor1").value);
+      const v2 = parseInt(document.getElementById("valor2").value);
+      const v3 = parseInt(document.getElementById("valor3").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(v1) || isNaN(v2) || isNaN(v3)) {
+        resultado.textContent = "Por favor, digite três números válidos.";
+        return;
+      }
+
+      if (v1 === v2 || v1 === v3 || v2 === v3) {
+        resultado.textContent = "Os valores devem ser diferentes entre si.";
+        return;
+      }
+
+      const valores = [v1, v2, v3];
+      valores.sort((a, b) => b - a); // ordena em ordem decrescente
+
+      resultado.textContent = `Ordem decrescente: ${valores.join(", ")}`;
+    }
+  </script>
+
+</body>
+</html>

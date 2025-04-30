@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dobro ou Triplo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dobro (se positivo) ou Triplo (se negativo)</h2>
+
+  <label for="numero">Digite um número:</label>
+  <input type="number" id="numero"><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      const numero = parseFloat(document.getElementById("numero").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(numero)) {
+        resultado.textContent = "Por favor, digite um número válido.";
+        return;
+      }
+
+      let resposta;
+
+      if (numero >= 0) {
+        resposta = numero * 2;
+        resultado.textContent = `Número positivo. O dobro de ${numero} é ${resposta}.`;
+      } else {
+        resposta = numero * 3;
+        resultado.textContent = `Número negativo. O triplo de ${numero} é ${resposta}.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

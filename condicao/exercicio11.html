@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento de Produto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, select, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calcular Valor de Pagamento</h2>
+
+  <label for="preco">Preço do produto (R$):</label>
+  <input type="number" id="preco" step="0.01"><br>
+
+  <label for="codigo">Condição de pagamento:</label>
+  <select id="codigo">
+    <option value="">-- Selecione --</option>
+    <option value="1">1 - À vista em dinheiro ou cheque (10% de desconto)</option>
+    <option value="2">2 - À vista no cartão (15% de desconto)</option>
+    <option value="3">3 - Em 2x sem juros</option>
+    <option value="4">4 - Em 2x com 10% de juros</option>
+  </select><br>
+
+  <button onclick="calcularPagamento()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcularPagamento() {
+      const preco = parseFloat(document.getElementById("preco").value);
+      const codigo = document.getElementById("codigo").value;
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(preco) || preco <= 0) {
+        resultado.textContent = "Por favor, insira um preço válido.";
+        return;
+      }
+
+      let total = 0;
+      let mensagem = "";
+
+      switch (codigo) {
+        case "1":
+          total = preco * 0.90;
+          mensagem = `Total com 10% de desconto: R$ ${total.toFixed(2)}`;
+          break;
+        case "2":
+          total = preco * 0.85;
+          mensagem = `Total com 15% de desconto: R$ ${total.toFixed(2)}`;
+          break;
+        case "3":
+          total = preco;
+          mensagem = `Total sem desconto: R$ ${total.toFixed(2)} (2x de R$ ${(total / 2).toFixed(2)})`;
+          break;
+        case "4":
+          total = preco * 1.10;
+          mensagem = `Total com 10% de juros: R$ ${total.toFixed(2)} (2x de R$ ${(total / 2).toFixed(2)})`;
+          break;
+        default:
+          mensagem = "Selecione uma condição de pagamento válida.";
+      }
+
+      resultado.textContent = mensagem;
+    }
+  </script>
+
+</body>
+</html>

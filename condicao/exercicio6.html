@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Booleanos - Verdadeiros ou Falsos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    select, button {
+      margin: 10px 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Verificar Valores Booleanos</h2>
+
+  <label for="valor1">Escolha o primeiro valor:</label>
+  <select id="valor1">
+    <option value="true">Verdadeiro</option>
+    <option value="false">Falso</option>
+  </select>
+
+  <label for="valor2">Escolha o segundo valor:</label>
+  <select id="valor2">
+    <option value="true">Verdadeiro</option>
+    <option value="false">Falso</option>
+  </select>
+
+  <button onclick="verificarBooleanos()">Verificar</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function verificarBooleanos() {
+      const valor1 = document.getElementById("valor1").value === "true";
+      const valor2 = document.getElementById("valor2").value === "true";
+      const resultado = document.getElementById("resultado");
+
+      if (valor1 === true && valor2 === true) {
+        resultado.textContent = "Ambos os valores são VERDADEIROS.";
+      } else if (valor1 === false && valor2 === false) {
+        resultado.textContent = "Ambos os valores são FALSOS.";
+      } else {
+        resultado.textContent = "Os valores são diferentes (um verdadeiro e um falso).";
+      }
+    }
+  </script>
+
+</body>
+</html>
